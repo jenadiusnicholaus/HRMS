@@ -32,7 +32,7 @@
 </head>
 <body>
 
-<div class="limiter">
+<div  class="limiter bg-white">
     <div class="container-login100">
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" style="width: 400px;">
@@ -42,7 +42,7 @@
             <form class="login100-form validate-form" method="post" action="{% url 'login' %}">
                 {% csrf_token %}
                 <span class="login100-form-title">
-                   {{ school_name }}
+                  ITMAIN HRMS
                                 </span>
                 <span class="error-msg"> 
                     {% if form.errors %}
