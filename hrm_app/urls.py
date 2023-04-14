@@ -22,14 +22,14 @@ urlpatterns = [
     path("accounts/", include("django.contrib.auth.urls")),
     path("", include("apps.corecode.urls")),
     path('admin/', admin.site.urls),
-#    path("finance/", include("apps.finance.urls")),
-#    path("result/", include("apps.result.urls")),
+    #    path("finance/", include("apps.finance.urls")),
+    #    path("result/", include("apps.result.urls")),
     path("employee/", include("apps.employees.urls")),
     path("doc/", include("apps.docs.urls")),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
