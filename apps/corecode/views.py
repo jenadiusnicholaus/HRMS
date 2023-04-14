@@ -258,7 +258,7 @@ class CitizenshipCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView)
     model = Citizenship
     form_class = CitizenshipForm
     template_name = "corecode/mgt_form.html"
-    success_url = reverse_lazy("citizenship")
+    succeNicholausss_url = reverse_lazy("citizenship")
     success_message = "Новое гражданство успешно добавлено"
 
 

@@ -8,50 +8,50 @@ from apps.corecode.models import PermitDocCategory, Citizenship
 
 
 class Employee(models.Model):
-    STATUS_CHOICES = [("active", "Работает"), ("inactive", "Уволенный")]
+    STATUS_CHOICES = [("active", "is working(active)"), ("inactive", "fired(inactive)")]
 
-    GENDER_CHOICES = [("male", "Муж"), ("female", "Жен")]
+    GENDER_CHOICES = [("male", "Male"), ("female", "Female")]
 
     #STAFF_CHOICES = [("WhiteCollar", "Белый воротник"), ("BlueCollar", "Синий воротник")]
 
     current_status = models.CharField(
-        max_length=10, choices=STATUS_CHOICES, default="active", verbose_name="Статус"
+        max_length=10, choices=STATUS_CHOICES, default="active"
     )
-    personnel_number = models.CharField(max_length=200, unique=True, verbose_name="Табельный номер")
-    surname = models.CharField(max_length=200, verbose_name="Фамилия")
-    firstname = models.CharField(max_length=200, verbose_name="Имя")
-    other_name = models.CharField(max_length=200, blank=True, verbose_name="Отчество")
-    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male", verbose_name="Пол")
-    date_of_birth = models.DateField(default=timezone.now, verbose_name="Дата рождения")
-    position = models.CharField(max_length=200, verbose_name="Должность")
+    personnel_number = models.CharField(max_length=200, unique=True, )
+    surname = models.CharField(max_length=200)
+    firstname = models.CharField(max_length=200)
+    other_name = models.CharField(max_length=200, blank=True )
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default="male",)
+    date_of_birth = models.DateField(default=timezone.now, )
+    position = models.CharField(max_length=200)
     """ current_class = models.ForeignKey(
         StudentClass, on_delete=models.SET_NULL, blank=True, null=True
     ) """
     citizenship = models.ForeignKey(
-        Citizenship, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Гражданство"
+        Citizenship, on_delete=models.SET_NULL, blank=True, null=True, 
     )
 
     current_doc_category = models.ForeignKey(
-        PermitDocCategory, on_delete=models.SET_NULL, blank=True, null=True, verbose_name="Категория документа"
+        PermitDocCategory, on_delete=models.SET_NULL, blank=True, null=True, 
     )
-    date_of_employment = models.DateField(default=timezone.now, verbose_name="Дата приема")
+    date_of_employment = models.DateField(default=timezone.now, )
 
-    date_of_dismissal = models.DateField(verbose_name="Дата увольнение")
+    date_of_dismissal = models.DateField()
 
-    tin_number = models.CharField(max_length=200, blank=True, verbose_name="ИНН")
+    tin_number = models.CharField(max_length=200, blank=True)
 
-    snils_number = models.CharField(max_length=200, blank=True, verbose_name="СНИЛС")
+    snils_number = models.CharField(max_length=200, blank=True)
 
     mobile_num_regex = RegexValidator(
         regex="^[0-9]{10,15}$", message="Entered mobile number isn't in a right format!"
     )
     mobile_number = models.CharField(
-        validators=[mobile_num_regex], max_length=13, blank=True, verbose_name="Тел номер"
+        validators=[mobile_num_regex], max_length=13, blank=True
     )
 
-    address = models.TextField(blank=True, verbose_name="Адрес в РФ")
-    others = models.TextField(blank=True, verbose_name="Другие")
-    photo = models.ImageField(blank=True, upload_to="employees/photos/", verbose_name="Фото")
+    address = models.TextField(blank=True, )
+    others = models.TextField(blank=True, )
+    photo = models.ImageField(blank=True, upload_to="employees/photos/", )
 
     class Meta:
         ordering = ["personnel_number", "surname", "firstname", "other_name"]

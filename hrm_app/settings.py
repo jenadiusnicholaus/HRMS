@@ -41,13 +41,13 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.humanize",
-    "whitenoise.runserver_nostatic", 
+    "whitenoise.runserver_nostatic",
     "widget_tweaks",
     "apps.corecode",
- #   "apps.students",
- #   "apps.staffs",
- #   "apps.finance",
- #   "apps.result",
+    #   "apps.students",
+    #   "apps.staffs",
+    #   "apps.finance",
+    #   "apps.result",
     "apps.employees",
     "apps.docs",
 ]
@@ -62,10 +62,10 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
-    "apps.corecode.middleware.SiteWideConfigs",    
+    "apps.corecode.middleware.SiteWideConfigs",
 ]
 
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "hrm_app.urls"
 
@@ -94,23 +94,23 @@ WSGI_APPLICATION = "hrm_app.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'railway',
+#         'USER': 'postgres',
+#         'PASSWORD': '4XDAPvWLNCTyZ8Mn0ZiM',
+#         'HOST': 'containers-us-west-154.railway.app',
+#         'PORT': '7371',
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': '4XDAPvWLNCTyZ8Mn0ZiM',
-        'HOST': 'containers-us-west-154.railway.app',
-        'PORT': '7371',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
     }
 }
-
-#DATABASES = {
-#    "default": {
-#        "ENGINE": "django.db.backends.sqlite3",
-#        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-#    }
-#}
 
 
 # Password validation
@@ -150,12 +150,13 @@ USE_L10N = True
 USE_TZ = True
 
 DATE_INPUT_FORMATS = ['%d.%m.%Y']
+LANGUAGE_CODE = "en-us"
 
-LANGUAGE_CODE = 'ru-RU'
+# LANGUAGE_CODE = 'ru-RU'
 
-#LOCALE_PATHS = [
+# LOCALE_PATHS = [
 #    BASE_DIR / 'locale/',
-#]
+# ]
 
 
 # Static files (CSS, JavaScript, Images)
@@ -166,11 +167,11 @@ DATA_UPLOAD_MAX_NUMBER_FIELDS = 10240
 STATIC_URL = "/static/"
 
 if DEBUG:
-        STATICFILES_DIRS = [
-            os.path.join(BASE_DIR, 'static')
-       ]
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, 'static')
+    ]
 else:
-        STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\', '/')
@@ -190,35 +191,35 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_AGE = 10800
 
 
-LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": False,
-    "formatters": {
-        "verbose": {
-            "format": "{levelname} {asctime} {message}",
-            "style": "{",
-        },
-    },
-    "handlers": {
-        "file": {
-            "level": "INFO",
-            "class": "logging.handlers.TimedRotatingFileHandler",
-            "when": "W6",
-            "interval": 4,
-            "backupCount": 3,
-            "encoding": "utf8",
-            "filename": os.path.join(BASE_DIR, "debug.log"),
-            "formatter": "verbose",
-        },
-    },
-    "loggers": {
-        "django": {
-            "handlers": ["file"],
-            "level": "INFO",
-            "propagate": True,
-        },
-    },
-}
+# LOGGING = {
+#     "version": 1,
+#     "disable_existing_loggers": False,
+#     "formatters": {
+#         "verbose": {
+#             "format": "{levelname} {asctime} {message}",
+#             "style": "{",
+#         },
+#     },
+#     "handlers": {
+#         "file": {
+#             "level": "INFO",
+#             "class": "logging.handlers.TimedRotatingFileHandler",
+#             "when": "W6",
+#             "interval": 4,
+#             "backupCount": 3,
+#             "encoding": "utf8",
+#             "filename": os.path.join(BASE_DIR, "debug.log"),
+#             "formatter": "verbose",
+#         },
+#     },
+#     "loggers": {
+#         "django": {
+#             "handlers": ["file"],
+#             "level": "INFO",
+#             "propagate": True,
+#         },
+#     },
+# }
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 

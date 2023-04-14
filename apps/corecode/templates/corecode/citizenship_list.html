@@ -3,14 +3,14 @@
 
 
 {% block title %}
-Гражданство
+Citizenship
 {% endblock title %}
 
 
 {% block breadcrumb %}
   <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#modal1">
     <i class="fa fa-plus"></i>
-    Добавить гражданство
+    Add citizenship
   </a>
 {% endblock breadcrumb %}
   
@@ -42,7 +42,7 @@
       <div class="modal-content">
         <form action="{% url 'citizenship-create' %}" method="POST">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Добавить гражданство</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Add citizenship</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -61,8 +61,8 @@
           </div>
 
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="submit" class="btn btn-primary">Добавить</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Add</button>
           </div>
         </form>
       </div>
